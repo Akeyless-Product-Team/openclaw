@@ -1,13 +1,8 @@
+# Use public npm without the upstream fork's unavailable registry token.
 # Automatic dependency update PRs, following the akeylesslabs AppSec baseline.
 # Check weekly; allow up to 100 open version-update PRs per update entry.
 # Existing repository-specific cooldowns, groups and registry settings are retained.
 version: 2
-registries:
-  npm-npmjs:
-    type: npm-registry
-    url: https://registry.npmjs.org
-    token: ${{secrets.NPM_NPMJS_TOKEN}}
-    replaces-base: true
 updates:
 - package-ecosystem: npm
   directory: /
@@ -27,8 +22,6 @@ updates:
       - minor
       - patch
   open-pull-requests-limit: 100
-  registries:
-  - npm-npmjs
 - package-ecosystem: github-actions
   directory: /
   schedule:
