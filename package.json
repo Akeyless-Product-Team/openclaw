@@ -1244,7 +1244,7 @@
     "@typescript/native-preview": "7.0.0-dev.20260326.1",
     "@vitest/coverage-v8": "^4.1.2",
     "jscpd": "4.0.8",
-    "jsdom": "^29.0.1",
+    "jsdom": "^31.0.0",
     "lit": "^3.3.2",
     "oxfmt": "0.42.0",
     "oxlint": "^1.57.0",
