@@ -1,5 +1,3 @@
-github.com/joshp123/pi-golang v0.0.4 h1:82HISyKNN8bIl2lvAd65462LVCQIsjhaUFQxyQgg5Xk=
-github.com/joshp123/pi-golang v0.0.4/go.mod h1:9mHEQkeJELYzubXU3b86/T8yedI/iAOKx0Tz0c41qes=
 github.com/yuin/goldmark v1.7.8 h1:iERMLn0/QJeHFhxSt3p6PeN9mGnvIKSpG9YYorDMnic=
 github.com/yuin/goldmark v1.7.8/go.mod h1:uzxRWxtg69N339t3louHJ7+O03ezfj6PlliRlaOzY1E=
 golang.org/x/net v0.50.0 h1:ucWh9eiCGyDR3vtzso0WMQinm2Dnt8cFMuQa9K33J60=
