@@ -1248,7 +1248,7 @@
     "lit": "^3.3.2",
     "oxfmt": "0.42.0",
     "oxlint": "^1.57.0",
-    "oxlint-tsgolint": "^0.17.4",
+    "oxlint-tsgolint": "^7.0.2006",
     "signal-utils": "0.21.1",
     "tsdown": "0.21.7",
     "tsx": "^4.21.0",
