@@ -1,127 +1,136 @@
-# Dependabot configuration
-# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
+# Automatic dependency update PRs, following the akeylesslabs AppSec baseline.
+# Check weekly; allow up to 100 open version-update PRs per update entry.
+# Existing repository-specific cooldowns, groups and registry settings are retained.
 version: 2
-
 registries:
   npm-npmjs:
     type: npm-registry
     url: https://registry.npmjs.org
     token: ${{secrets.NPM_NPMJS_TOKEN}}
     replaces-base: true
-
 updates:
-  # npm dependencies (root)
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: daily
-    cooldown:
-      default-days: 2
-    groups:
-      production:
-        dependency-type: production
-        update-types:
-          - minor
-          - patch
-      development:
-        dependency-type: development
-        update-types:
-          - minor
-          - patch
-    open-pull-requests-limit: 10
-    registries:
-      - npm-npmjs
-
-  # GitHub Actions
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: daily
-    cooldown:
-      default-days: 2
-    groups:
-      actions:
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
-    open-pull-requests-limit: 5
-
-  # Swift Package Manager - macOS app
-  - package-ecosystem: swift
-    directory: /apps/macos
-    schedule:
-      interval: daily
-    cooldown:
-      default-days: 2
-    groups:
-      swift-deps:
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
-    open-pull-requests-limit: 5
-
-  # Swift Package Manager - shared MoltbotKit
-  - package-ecosystem: swift
-    directory: /apps/shared/MoltbotKit
-    schedule:
-      interval: daily
-    cooldown:
-      default-days: 2
-    groups:
-      swift-deps:
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
-    open-pull-requests-limit: 5
-
-  # Swift Package Manager - Swabble
-  - package-ecosystem: swift
-    directory: /Swabble
-    schedule:
-      interval: daily
-    cooldown:
-      default-days: 2
-    groups:
-      swift-deps:
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
-    open-pull-requests-limit: 5
-
-  # Gradle - Android app
-  - package-ecosystem: gradle
-    directory: /apps/android
-    schedule:
-      interval: daily
-    cooldown:
-      default-days: 2
-    groups:
-      android-deps:
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
-    open-pull-requests-limit: 5
-
-  # Docker base images
-  - package-ecosystem: docker
-    directory: /
-    schedule:
-      interval: weekly
-    cooldown:
-      default-days: 2
-    groups:
-      docker-images:
-        patterns:
-          - "*"
-    open-pull-requests-limit: 5
+- package-ecosystem: npm
+  directory: /
+  schedule:
+    interval: weekly
+  cooldown:
+    default-days: 2
+  groups:
+    production:
+      dependency-type: production
+      update-types:
+      - minor
+      - patch
+    development:
+      dependency-type: development
+      update-types:
+      - minor
+      - patch
+  open-pull-requests-limit: 100
+  registries:
+  - npm-npmjs
+- package-ecosystem: github-actions
+  directory: /
+  schedule:
+    interval: weekly
+  cooldown:
+    default-days: 2
+  groups:
+    actions:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  open-pull-requests-limit: 100
+- package-ecosystem: swift
+  directory: /apps/macos
+  schedule:
+    interval: weekly
+  cooldown:
+    default-days: 2
+  groups:
+    swift-deps:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  open-pull-requests-limit: 100
+- package-ecosystem: swift
+  directory: /apps/shared/OpenClawKit
+  schedule:
+    interval: weekly
+  cooldown:
+    default-days: 2
+  groups:
+    swift-deps:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  open-pull-requests-limit: 100
+- package-ecosystem: swift
+  directory: /Swabble
+  schedule:
+    interval: weekly
+  cooldown:
+    default-days: 2
+  groups:
+    swift-deps:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  open-pull-requests-limit: 100
+- package-ecosystem: gradle
+  directory: /apps/android
+  schedule:
+    interval: weekly
+  cooldown:
+    default-days: 2
+  groups:
+    android-deps:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  open-pull-requests-limit: 100
+- package-ecosystem: docker
+  directory: /
+  schedule:
+    interval: weekly
+  cooldown:
+    default-days: 2
+  groups:
+    docker-images:
+      patterns:
+      - '*'
+  open-pull-requests-limit: 100
+- package-ecosystem: github-actions
+  directories:
+  - /.github/actions/detect-docs-changes
+  - /.github/actions/ensure-base-commit
+  - /.github/actions/setup-node-env
+  - /.github/actions/setup-pnpm-store-cache
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 100
+- package-ecosystem: docker
+  directories:
+  - /scripts/docker/cleanup-smoke
+  - /scripts/docker/install-sh-e2e
+  - /scripts/docker/install-sh-nonroot
+  - /scripts/docker/install-sh-smoke
+  - /scripts/e2e
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 100
+- package-ecosystem: gomod
+  directory: /scripts/docs-i18n
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 100
