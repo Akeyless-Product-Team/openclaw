@@ -1184,7 +1184,7 @@
     "ui:install": "node scripts/ui.js install"
   },
   "dependencies": {
-    "@agentclientprotocol/sdk": "0.17.0",
+    "@agentclientprotocol/sdk": "2.4.0",
     "@anthropic-ai/vertex-sdk": "^0.14.4",
     "@aws-sdk/client-bedrock": "^3.1019.0",
     "@clack/prompts": "^1.1.0",
